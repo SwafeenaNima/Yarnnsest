@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    Welcome to yarNNest
+
+{% endblock %}
+
+{% block title %}
+    Search
+{% endblock %}
+{% block content %}
+<div>
+
+    <p class="text-center my_search_txt">
+        You have searched for<b></b>
+    </p>
+</div>
+<div class="container">
+    <div class="row mx_auto">
+        <!--{% if products != '' %}-->
+        {% for pdt in products %}
+        <div class="my_bottom_margin col-9 col-sm-12  col-md-12 col-lg-4">
+            <div class="card text-center" style="width:408px; height:505px; min-width:18rem;">
+                <a href="{{pdt.get_url}}"><img class="card-img-top my_image" src="{{pdt.image.url}}" alt="{{pdt.name}}" ></a>
+                <div class="card-body">
+                    <h4>{{pdt.name}}</h4>
+                    <p>{{pdt.price}} AED</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <div class="row mx-auto">
+                <p class="text-center my_search_text">No matching found</p>
+            </div>
+        {% endfor %}
+        <!--{% endif %}-->
+    </div>
+    <br>
+</div>
+
+{% endblock %}
+
+
